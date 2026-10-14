@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { 
   Zap, ShieldCheck, ArrowRight, CheckCircle2, AlertTriangle, 
   RefreshCw, Layers, DollarSign, Database, Activity, Smartphone,
-  Bike, Car, Fuel, Wrench, HeartPulse, ChevronRight, X
+  Bike, Car, Fuel, Wrench, HeartPulse, ChevronRight, X, Sparkles, TrendingUp
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ParticlesCanvas from './components/ParticlesCanvas';
+import OutcomeChart from './components/OutcomeChart';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('underwriter'); // 'underwriter' | 'splitter' | 'insurance' | 'fleet_api'
@@ -117,12 +119,18 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
-            Bolt / Grab / Yassir Payout Webhooks ➔ 0% Unpaid Default Guarantee
+      {/* Hero Section with Casberry-style Particles Canvas */}
+      <section className="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        {/* Interactive WebGL / Casberry Canvas Simulation */}
+        <ParticlesCanvas color="249, 115, 22" particleCount={50} connectionDistance={120} />
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto space-y-5">
+          {/* Kokonut UI Shimmering Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-orange-500/40 text-xs text-slate-200 shadow-lg shadow-orange-500/10 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span>
+            <span className="font-semibold text-orange-300">Live Driver Fintech Infrastructure</span>
+            <span className="text-slate-500">•</span>
+            <span>Bolt / Grab / Yassir Payout Webhooks ➔ 0% Unpaid Default Guarantee</span>
           </div>
 
           {/* EXACT H1 TAG */}
@@ -130,45 +138,51 @@ export default function App() {
             Embedded Fintech for Gig Workers: Closed-Loop Micro-Credit & Daily Protection
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-300/90 max-w-2xl mx-auto">
             Give rideshare drivers $25 instant fuel advances and $1/day accident protection with zero credit checks. Automatically auto-repaid via 15% deductions from daily platform trips.
           </p>
+
+          {/* Larry Ellison Playbook: Confuse the Tenses & Sell Harder Than You Build */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-orange-950/40 border border-orange-500/30 text-xs text-orange-200">
+            <Sparkles className="w-4 h-4 text-orange-400 shrink-0" />
+            <span><strong className="text-white">Service-as-a-Software Gig Fintech:</strong> Zero human loan agents or debt collectors. Micro-advances auto-clear from live trip streams.</span>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button 
               onClick={() => { setActiveTab('splitter'); startTripSimulation(); }}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-slate-950 font-bold text-sm hover:from-orange-400 hover:to-amber-300 transition shadow-xl shadow-orange-500/20 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-slate-950 font-bold text-sm hover:from-orange-400 hover:to-amber-300 transition shadow-xl shadow-orange-500/25 flex items-center gap-2 group cursor-pointer"
             >
-              <Zap className="w-4 h-4 fill-current" />
+              <Zap className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" />
               Simulate 5-Trip Source Repayment
             </button>
             <button 
               onClick={() => setActiveTab('underwriter')}
-              className="px-6 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-slate-200 font-semibold text-sm hover:bg-slate-800 transition flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-slate-200 font-semibold text-sm hover:bg-slate-800 transition flex items-center gap-2 cursor-pointer backdrop-blur-md"
             >
               Adjust Daily Underwriting Limits
             </button>
           </div>
 
           <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-left max-w-3xl mx-auto">
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-orange-500/30 transition">
               <span className="text-slate-400 block">Default Rate (NPL)</span>
-              <span className="text-lg font-bold text-orange-400">&lt; 1.2% NPL</span>
+              <span className="text-xl font-bold text-orange-400">&lt; 1.2% NPL</span>
               <span className="text-[10px] text-slate-500 block">vs. 25%+ Open-Banking</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-orange-500/30 transition">
               <span className="text-slate-400 block">Advance Approval</span>
-              <span className="text-lg font-bold text-white">Instant (&lt; 30s)</span>
+              <span className="text-xl font-bold text-white">Instant (&lt; 30s)</span>
               <span className="text-[10px] text-slate-500 block">Zero Credit Bureau Check</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-orange-500/30 transition">
               <span className="text-slate-400 block">Repayment Mechanism</span>
-              <span className="text-lg font-bold text-amber-400">15% Split/Trip</span>
+              <span className="text-xl font-bold text-amber-400">15% Split/Trip</span>
               <span className="text-[10px] text-slate-500 block">Direct Platform Deduction</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-orange-500/30 transition">
               <span className="text-slate-400 block">Daily Protection</span>
-              <span className="text-lg font-bold text-orange-300">$1/Shift</span>
+              <span className="text-xl font-bold text-orange-300">$1/Shift</span>
               <span className="text-[10px] text-slate-500 block">Hospital Cash & Bike Repair</span>
             </div>
           </div>
@@ -177,6 +191,15 @@ export default function App() {
 
       {/* Main Workspaces */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        {/* Sequoia Framework Outcome Visualizer (Bklit UI + Julien Bek $1 vs $6 Ratio) */}
+        <div className="mb-12">
+          <OutcomeChart 
+            serviceName="Fleet Driver Fuel Advances & Micro-Insurance"
+            defaultFleetDrivers={450}
+            onCtaClick={() => setCabModalOpen(true)}
+          />
+        </div>
+
         {/* Navigation Tabs */}
         <div className="flex border-b border-slate-800 mb-8 overflow-x-auto">
           <button 
